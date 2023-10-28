@@ -1,0 +1,295 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --background: #222738;
+  --font: #778da9;
+  --cells: #13131c;
+  --cells-hover: #181825;
+  --x-color: #35c9dd;
+  --o-color: #f000ff;
+}
+
+body {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--background);
+  color: var(--font);
+  font-family: "Poppins", sans-serif;
+  padding: 20px 0;
+}
+
+.x-player {
+  color: var(--x-color);
+  text-shadow: 0 0 5px var(--x-color), 0 0 5px var(--x-color);
+}
+
+.o-player {
+  color: var(--o-color);
+  text-shadow: 0 0 5px var(--o-color), 0 0 5px var(--o-color);
+}
+
+.contain-turn {
+  position: relative;
+  width: 362px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 40px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  background-color: var(--cells);
+  animation: bounceInDown;
+  animation-duration: 1.5s;
+}
+
+.xTurn,
+.oTurn {
+  position: absolute;
+  font-size: 1.2rem;
+  font-weight: 900;
+  z-index: 10;
+  transition: 0.4s ease-in-out all;
+}
+
+.xTurn {
+  left: 40px;
+  color: aliceblue;
+}
+
+.oTurn {
+  right: 40px;
+}
+
+.slider {
+  position: absolute;
+  left: 25px;
+  height: 70%;
+  width: 120px;
+  border-radius: 10px;
+  background-color: var(--x-color);
+  transition: 0.3s ease-in-out all;
+}
+
+.move-slider {
+  transform: translateX(193px);
+  transition: 0.3s ease-in-out all;
+  background-color: var(--o-color);
+}
+
+.contain {
+  display: flex;
+  flex-direction: column;
+  animation: flipInX; /* referring directly to the animation's @keyframe declaration */
+  animation-duration: 1.5s; /* don't forget to set a duration! */
+}
+
+.card {
+  width: 100%;
+  display: flex;
+}
+
+.cell {
+  width: 120px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 2px;
+  background-color: var(--cells);
+  border: 1px solid var(--background);
+  border-radius: 10px;
+  font-size: 3.5rem;
+  font-weight: 900;
+}
+
+.cell:hover {
+  background-color: var(--cells-hover);
+  cursor: pointer;
+}
+
+.contain-victory,
+.contain-draw {
+  display: none;
+  position: absolute;
+  top: 142px;
+  z-index: 20;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+
+  /* From https://css.glass */
+  background: rgba(19, 19, 28, 0.79);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5.1px);
+  -webkit-backdrop-filter: blur(5.1px);
+  border: 1px solid rgba(19, 19, 28, 0.5);
+
+  box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+  height: 330px;
+  width: 330px;
+}
+
+.contain-victory-show,
+.contain-draw-show {
+  animation: bounceIn;
+  animation-duration: 1s;
+}
+
+.contain-victory-hiden,
+.contain-draw-hiden {
+  animation: bounceOut;
+  animation: 1s;
+}
+
+.contain-victory h1,
+.contain-draw h1 {
+  text-transform: uppercase;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.btn-restart {
+  width: 50%;
+  margin-top: 30px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 1rem;
+  background-color: transparent;
+  color: var(--font);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s all;
+}
+
+.btn-restart-x-style {
+  width: 70%;
+  border: 1px solid var(--x-color);
+  box-shadow: 0 0 10px var(--x-color);
+}
+
+.btn-restart-x-style:hover {
+  background-color: var(--x-color);
+  color: aliceblue;
+  transition: 0.3s all;
+}
+
+.btn-restart-o-style {
+  width: 70%;
+  border: 1px solid var(--o-color);
+  box-shadow: 0 0 10px var(--o-color);
+}
+
+.btn-restart-o-style:hover {
+  background-color: var(--o-color);
+  color: aliceblue;
+  transition: 0.3s all;
+}
+
+.btn-restart-draw-style {
+  width: 70%;
+  border: 1px solid var(--font);
+  box-shadow: 0 0 10px var(--font);
+}
+
+.btn-restart-draw-style:hover {
+  background-color: var(--font);
+  color: aliceblue;
+  transition: 0.3s all;
+}
+
+.btn-restart span {
+  font-size: 1.5rem;
+}
+
+.game-contain {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  /*   border: 1px solid red;
+ */
+}
+
+.score-style {
+  width: 120px;
+  height: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 2px;
+  border-radius: 10px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  border: 1px solid var(--background);
+}
+
+.score-players {
+  /*   border: 1px solid yellowgreen;
+ */
+  width: 100%;
+  display: flex;
+  margin-top: 20px;
+}
+
+.x-score,
+.draw-score,
+.o-score {
+  background-color: var(--cells);
+  color: var(--font);
+  font-size: 2rem;
+  text-transform: uppercase;
+  font-weight: 800;
+}
+
+.x-score span,
+.draw-score span,
+.o-score span {
+  font-size: 1rem;
+}
+
+#x-score,
+#draw-score,
+#o-score {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.x-score {
+  animation: fadeInLeftBig;
+  animation-duration: 1s;
+  transition: transform 0.3s;
+  transform: rotate(-5deg);
+  border: 3px inset var(--x-color);
+}
+
+.draw-score {
+  animation: fadeInLeftBig;
+  animation-duration: 1.5s;
+  transform: rotate(2deg);
+  transition: transform 0.3s;
+  border: 3px inset var(--font);
+}
+
+.o-score {
+  animation: fadeInLeftBig;
+  animation-duration: 2s;
+  transform: rotate(5deg);
+  border: 3px inset var(--o-color);
+  transition: transform 0.3s;
+}
