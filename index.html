@@ -22,6 +22,17 @@
     </div>
 
     <section class="game-contain">
+      <div class="button-reset-contain">
+        <button id="restart-round-button" class="button-reset">
+          <span class="refresh">↻</span>
+          <span>rodada</span>
+        </button>
+        <button id="restart-score-button" class="button-reset">
+          <span class="refresh">↻</span>
+          <span>placar</span>
+        </button>
+      </div>
+
       <div class="contain-victory">
         <h1>Vitória do jogador <span class="winning-player">X</span></h1>
         <button
@@ -62,6 +73,7 @@
 
       <div class="score-players">
         <div class="x-score score-style">
+          <img src="./img/king.png" alt="" width="20px" class="x-winning" />
           <span>jogador <span style="color: var(--x-color)">X</span></span>
           <span id="x-score">0</span>
         </div>
@@ -70,6 +82,7 @@
           <span id="draw-score">0</span>
         </div>
         <div class="o-score score-style">
+          <img src="./img/king.png" alt="" width="20px" class="o-winning" />
           <span>jogador <span style="color: var(--o-color)">O</span></span>
           <span id="o-score">0</span>
         </div>

@@ -119,7 +119,7 @@ body {
 .contain-draw {
   display: none;
   position: absolute;
-  top: 142px;
+  top: 20px;
   z-index: 20;
   flex-direction: column;
   align-items: center;
@@ -216,6 +216,7 @@ body {
 }
 
 .game-contain {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -223,6 +224,55 @@ body {
 
   /*   border: 1px solid red;
  */
+}
+
+.button-reset-contain {
+  position: absolute;
+  top: 16%;
+  left: -100px;
+  display: flex;
+  flex-direction: column;
+}
+
+.button-reset {
+  height: 80px;
+  width: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+  padding: 5px;
+  font-size: 0.8rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  border-radius: 10px;
+  background-color: var(--cells);
+  color: var(--font);
+  cursor: pointer;
+  border: none;
+  transition: 0.3s;
+}
+
+#restart-round-button {
+  animation: jackInTheBox;
+  animation-duration: 1.5s;
+}
+
+#restart-score-button {
+  animation: jackInTheBox;
+  animation-duration: 1.5s;
+}
+
+.button-reset:hover {
+  background-color: var(--cells-hover);
+  color: aliceblue;
+  transition: 0.3s;
+}
+
+.refresh {
+  font-size: 1.8rem;
+  font-weight: 900;
 }
 
 .score-style {
@@ -271,11 +321,26 @@ body {
 }
 
 .x-score {
+  position: relative;
   animation: fadeInLeftBig;
   animation-duration: 1s;
   transition: transform 0.3s;
   transform: rotate(-5deg);
   border: 3px inset var(--x-color);
+}
+
+.x-winning {
+  position: absolute;
+  opacity: 0;
+  transition: 0.5s all;
+  top: -18px;
+  left: -10px;
+  transform: rotate(-20deg);
+}
+
+.show-x-winning {
+  opacity: 1;
+  transition: 0.5s all;
 }
 
 .draw-score {
@@ -287,9 +352,24 @@ body {
 }
 
 .o-score {
+  position: relative;
   animation: fadeInLeftBig;
   animation-duration: 2s;
   transform: rotate(5deg);
   border: 3px inset var(--o-color);
   transition: transform 0.3s;
+}
+
+.o-winning {
+  position: absolute;
+  opacity: 0;
+  top: -18px;
+  right: -10px;
+  transform: rotate(20deg);
+  transition: 0.5s all;
+}
+
+.show-o-winning {
+  opacity: 1;
+  transition: 0.5s all;
 }
