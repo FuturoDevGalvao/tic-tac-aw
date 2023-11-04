@@ -8,7 +8,12 @@ const oTurn = document.querySelector(".oTurn");
 const cardVencedor = document.querySelector(".contain-victory");
 const cardEmpate = document.querySelector(".contain-draw");
 
+const btnRestartVictory = document.getElementById("btn-restart-victory");
+const btnRestartDraw = document.getElementById("btn-restart-draw");
+const btnResetRound = document.getElementById("restart-round-button");
+const btnResetScore = document.getElementById("restart-score-button");
 const btnReiniciar = document.querySelector(".btn-restart");
+
 const vencedorNome = document.querySelector(".winning-player");
 
 const xScore = document.getElementById("x-score");
@@ -18,18 +23,16 @@ const oScore = document.getElementById("o-score");
 const crownX = document.querySelector(".x-score img");
 const crownO = document.querySelector(".o-score img");
 
-const btnResetRound = document.getElementById("restart-round-button");
-const btnResetScore = document.getElementById("restart-score-button");
-
 let xScoreCount = 0,
   drawScoreCount = 0,
   oScoreCount = 0;
 
-let jogadas = 9;
-let vencedor = false;
-let jogador = "";
 let celulasBloqueadas = false,
-  btnResetBloqueado = false;
+  btnResetBloqueado = false,
+  vencedor = false;
+
+let jogadas = 9;
+let jogador = "";
 const tabuleiro = [
   [null, null, null],
   [null, null, null],
@@ -329,7 +332,7 @@ function naFrente() {
   }
 }
 
-document.getElementById("btn-restart-victory").addEventListener("click", () => {
+btnRestartVictory.addEventListener("click", () => {
   cardVencedor.classList.remove("contain-victory-show");
   cardVencedor.classList.add("contain-victory-hiden");
 
@@ -338,7 +341,7 @@ document.getElementById("btn-restart-victory").addEventListener("click", () => {
   reiniciar();
 });
 
-document.getElementById("btn-restart-draw").addEventListener("click", () => {
+btnRestartDraw.addEventListener("click", () => {
   cardEmpate.classList.remove("contain-draw-show");
   cardEmpate.classList.add("contain-draw-hiden");
 
